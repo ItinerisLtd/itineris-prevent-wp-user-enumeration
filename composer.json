@@ -1,0 +1,60 @@
+{
+  "name": "itinerisltd/itineris-prevent-wp-user-enumeration",
+  "description": "Prevent User Enumeration in WordPress to satisfy security reports.",
+  "license": "GPL-2.0-or-later",
+  "type": "wordpress-muplugin",
+  "keywords": [
+    "security",
+    "wordpress",
+    "users",
+    "owasp"
+  ],
+  "authors": [
+    {
+      "name": "Itineris Limited",
+      "email": "hello@itineris.co.uk",
+      "homepage": "https://itineris.co.uk/",
+      "role": "Company"
+    },
+    {
+      "name": "Lee Hanbury-Pickett",
+      "email": "lee.hanbury@gmail.com",
+      "homepage": "https://github.com/codepuncher/",
+      "role": "Developer"
+    }
+  ],
+  "homepage": "https://itinerisltd.github.io/itineris-prevent-wp-user-enumeration/",
+  "support": {
+    "email": "hello@itineris.co.uk",
+    "issues": "https://github.com/ItinerisLtd/itineris-prevent-wp-user-enumeration/issues",
+    "source": "https://github.com/ItinerisLtd/itineris-prevent-wp-user-enumeration"
+  },
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "itinerisltd/itineris-wp-coding-standards": "^0.4.1"
+  },
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    },
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1.x-dev"
+    }
+  },
+  "scripts": {
+    "pretag": [
+      "composer update",
+      "composer normalize",
+      "github_changelog_generator --no-verbose"
+    ]
+  }
+}
