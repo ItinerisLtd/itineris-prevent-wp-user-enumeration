@@ -18,11 +18,24 @@ if (! defined('WPINC')) {
 }
 
 // Make login errors generic.
-add_filter('login_errors', function (string $error): string {
-    $errors = $GLOBALS['errors'];
-    $error_codes = $errors->get_error_codes();
-    if (! in_array('invalid_username', $error_codes, true) && ! in_array('incorrect_password', $error_codes, true)) {
-        return $error;
+add_filter('login_errors', function (string $errors): string {
+    if (isset($GLOBALS['errors']) && $GLOBALS['errors'] instanceof WP_Error) {
+        $error_codes = $GLOBALS['errors']->get_error_codes();
+        if (! in_array('invalid_username', $error_codes, true) && ! in_array('incorrect_password', $error_codes, true)) {
+            return $errors;
+        }
+    } else {
+        $errors_to_check = [
+            'The username or password you entered is incorrect',
+            'lostpassword',
+        ];
+        $has_valid_error = (bool) array_filter(
+            $errors_to_check,
+            fn (string $error): bool => ! str_contains($errors, $error),
+        );
+        if ($has_valid_error) {
+            return $errors;
+        }
     }
 
     return __('Something was wrong.', 'itineris-prevent-wp-user-enumeration');
