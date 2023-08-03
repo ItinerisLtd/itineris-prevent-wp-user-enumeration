@@ -57,10 +57,19 @@ add_action('wp', function (): void {
 
 // Remove user-related REST endpoints.
 add_filter('rest_endpoints', function (array $endpoints): array {
+    if (is_admin() || ! function_exists('get_current_screen')) {
+        return $endpoints;
+    }
+
+    $screen = get_current_screen();
+    if ($screen instanceof WP_Screen && $screen->is_block_editor()) {
+        return $endpoints;
+    }
+
     return array_filter(
         $endpoints,
         fn(string $endpoint): bool => (0 === preg_match('/^\/wp\/v2\/users/', $endpoint)),
-        ARRAY_FILTER_USE_KEY
+        ARRAY_FILTER_USE_KEY,
     );
 });
 
