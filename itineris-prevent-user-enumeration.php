@@ -57,12 +57,7 @@ add_action('wp', function (): void {
 
 // Remove user-related REST endpoints.
 add_filter('rest_endpoints', function (array $endpoints): array {
-    if (is_admin() || ! function_exists('get_current_screen')) {
-        return $endpoints;
-    }
-
-    $screen = get_current_screen();
-    if ($screen instanceof WP_Screen && $screen->is_block_editor()) {
+    if (is_admin() || current_user_can('list_users')) {
         return $endpoints;
     }
 
