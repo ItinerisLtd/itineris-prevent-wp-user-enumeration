@@ -48,7 +48,7 @@ Upload [itineris-prevent-wp-user-enumeration.php](./itineris-prevent-wp-user-enu
 
 ### Will you add support for older PHP versions?
 
-Never! This plugin will only works on [actively supported PHP versions](https://secure.php.net/supported-versions.php).
+Never! This plugin will only work on [actively supported PHP versions](https://secure.php.net/supported-versions.php).
 
 Don't use it on **end of life** or **security fixes only** PHP versions.
 
@@ -61,7 +61,7 @@ Don't use it on **end of life** or **security fixes only** PHP versions.
 
 ### This isn't on wp.org. Where can I give a ⭐️⭐️⭐️⭐️⭐️ review?
 
-Thanks! Glad you like it. It's important to make my boss know somebody is using this project. Instead of giving reviews on wp.org, consider:
+Thanks! Glad you like it. It's important to let my boss know somebody is using this project. Instead of giving reviews on wp.org, consider:
 
 - tweet something good with mentioning [@itineris_ltd](https://twitter.com/itineris_ltd)
 - star this Github repo
@@ -82,15 +82,15 @@ Please see [CHANGELOG](./CHANGELOG.md) for more information on what has changed 
 
 ## Security
 
-If you discover any security related issues, please email hello@itineris.co.uk instead of using the issue tracker.
+If you discover any security-related issues, please email hello@itineris.co.uk instead of using the issue tracker.
 
 ## Credits
 
-[Itineris Disable XML-RPC](https://github.com/ItinerisLtd/itineris-prevent-wp-user-enumeration) is a [Itineris Limited](https://www.itineris.co.uk/) project created by [Tang Rufus](https://typist.tech).
+[Itineris Prevent WP User Enumeration](https://github.com/ItinerisLtd/itineris-prevent-wp-user-enumeration) is a [Itineris Limited](https://www.itineris.co.uk/) project created by [Lee Hanbury-Pickett](https://github.com/codepuncher).
 
-Full list of contributors can be found [here](https://github.com/ItinerisLtd/itineris-prevent-wp-user-enumeration/graphs/contributors).
+A full list of contributors can be found [here](https://github.com/ItinerisLtd/itineris-prevent-wp-user-enumeration/graphs/contributors).
 
 ## License
 
-[Itineris Disable XML-RPC](https://github.com/ItinerisLtd/itineris-prevent-wp-user-enumeration) is licensed under the GPLv2 (or later) from the [Free Software Foundation](http://www.fsf.org/).
+[Itineris Prevent WP User Enumeration](https://github.com/ItinerisLtd/itineris-prevent-wp-user-enumeration) is licensed under the GPLv2 (or later) from the [Free Software Foundation](http://www.fsf.org/).
 Please see [License File](LICENSE) for more information.
