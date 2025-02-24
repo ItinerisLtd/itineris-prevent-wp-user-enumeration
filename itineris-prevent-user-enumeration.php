@@ -46,7 +46,7 @@ add_action('wp', function (): void {
     /** @var WP_Query */
     $wp_query = $GLOBALS['wp_query'];
     $query_vars = $wp_query->query_vars;
-    if (empty($query_vars) || empty($query_vars['author'])) {
+    if (empty($query_vars) || empty($query_vars['author']) || $wp_query->is_author()) {
         return;
     }
 
