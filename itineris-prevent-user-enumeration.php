@@ -21,7 +21,10 @@ if (! defined('WPINC')) {
 add_filter('login_errors', function (string $errors): string {
     if (isset($GLOBALS['errors']) && $GLOBALS['errors'] instanceof WP_Error) {
         $error_codes = $GLOBALS['errors']->get_error_codes();
-        if (! in_array('invalid_username', $error_codes, true) && ! in_array('incorrect_password', $error_codes, true)) {
+        if (
+            ! in_array('invalid_username', $error_codes, true) &&
+            ! in_array('incorrect_password', $error_codes, true)
+        ) {
             return $errors;
         }
     } else {
