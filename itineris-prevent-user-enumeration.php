@@ -21,7 +21,10 @@ if (! defined('WPINC')) {
 add_filter('login_errors', function (string $errors): string {
     if (isset($GLOBALS['errors']) && $GLOBALS['errors'] instanceof WP_Error) {
         $error_codes = $GLOBALS['errors']->get_error_codes();
-        if (! in_array('invalid_username', $error_codes, true) && ! in_array('incorrect_password', $error_codes, true)) {
+        if (
+            ! in_array('invalid_username', $error_codes, true) &&
+            ! in_array('incorrect_password', $error_codes, true)
+        ) {
             return $errors;
         }
     } else {
@@ -73,4 +76,53 @@ add_filter('oembed_response_data', function (array $data): array {
     unset($data['author_name']);
     unset($data['author_url']);
     return $data;
+});
+
+/**
+ * Remove references to usernames where "the_author" is called
+ * An example of this can be found in WP /feed/.
+ */
+add_filter('the_author', function (string $author): string {
+    if (is_admin()) {
+        return $author;
+    }
+
+    if (! $GLOBALS['authordata'] instanceof WP_User) {
+        return $author;
+    }
+
+    // Check lowercase in case it matches anything.
+    $author = strtolower($author);
+    $user = $GLOBALS['authordata'];
+
+    // If not using "username", all is fine.
+    if (strtolower($user->user_login) !== $author) {
+        return $author;
+    }
+
+    // If nicename is not the username, use it.
+    if (! empty($user->user_nicename) && strtolower($user->user_nicename) !== $author) {
+        return $user->user_nicename;
+    }
+
+    // If nickname is not the username, use it.
+    if (! empty($user->nickname) && strtolower($user->nickname) !== $author) {
+        return $user->nickname;
+    }
+
+    $maybe_new_author = '';
+    if (! empty($user->first_name)) {
+        $maybe_new_author = $user->first_name;
+    }
+    if (! empty($user->last_name)) {
+        $maybe_new_author = trim("{$maybe_new_author} {$user->last_name}");
+    }
+
+    // If first/last names are not the username, use it.
+    if (strtolower($maybe_new_author) !== $author) {
+        return $maybe_new_author;
+    }
+
+    // Finally, if all options are same as the username then give up.
+    return 'REDACTED';
 });
