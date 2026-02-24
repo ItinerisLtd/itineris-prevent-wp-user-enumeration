@@ -2,8 +2,8 @@
 /**
  * Plugin Name:     Itineris Prevent WP User Enumeration
  * Plugin URI:      https://github.com/ItinerisLtd/itineris-prevent-wp-user-enumeration
- * Description:     Disable WordPress XML-RPC via actions and filters.
- * Version:         0.3.0
+ * Description:     Prevent User Enumeration in WordPress to satisfy security reports.
+ * Version:         0.3.1
  * Author:          Itineris Limited
  * Author URI:      https://itineris.co.uk
  * License:         GPL-2.0-or-later
