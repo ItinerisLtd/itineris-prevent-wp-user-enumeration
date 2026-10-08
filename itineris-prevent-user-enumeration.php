@@ -3,7 +3,7 @@
  * Plugin Name:        Itineris Prevent WP User Enumeration
  * Plugin URI:         https://github.com/ItinerisLtd/itineris-prevent-wp-user-enumeration
  * Description:        Prevent User Enumeration in WordPress to satisfy security reports.
- * Version:            0.4.0
+ * Version:            0.4.1
  * Requires at least:  7.1
  * Requires PHP:       8.4
  * Author:             Itineris Limited
