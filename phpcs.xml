@@ -18,7 +18,7 @@
     <exclude name="Squiz.Commenting.FunctionComment.MissingParamName" />
   </rule>
 
-  <config name="minimum_wp_version" value="6.1" />
+  <config name="minimum_wp_version" value="7.1" />
 
   <rule ref="WordPress.WP.I18n">
     <properties>

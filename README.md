@@ -31,7 +31,7 @@ Prevent the possibility of discovering usernames by various means.
 
 ## Requirements
 
-- WordPress 6.1 or later
+- WordPress 7.1 or later
 - PHP 8.4 or later
 
 ## Installation
