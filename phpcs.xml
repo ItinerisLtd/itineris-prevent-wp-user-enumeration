@@ -2,6 +2,7 @@
 <ruleset name="Plugin">
   <!-- Check only our site MU plugin -->
   <file>./</file>
+  <exclude-pattern type="relative">^vendor/*</exclude-pattern>
 
   <!-- Show colors in console -->
   <arg value="-colors" />
@@ -14,21 +15,16 @@
 
   <!-- Use Itineris WP Coding Standards -->
   <rule ref="Itineris">
-    <exclude name="PSR12.Files.FileHeader" />
-
-    <exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
     <exclude name="Squiz.Commenting.FunctionComment.MissingParamName" />
-    <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
-
-    <exclude name="WordPress.NamingConventions.ValidVariableName" />
-    <exclude name="WordPress.WP.EnqueuedResourceParameters.MissingVersion" />
   </rule>
 
-  <config name="minimum_supported_wp_version" value="6.1" />
+  <config name="minimum_wp_version" value="6.1" />
 
   <rule ref="WordPress.WP.I18n">
     <properties>
-      <property name="text_domain" type="array" value="itineris-prevent-wp-user-enumeration" />
+      <property name="text_domain" type="array">
+        <element value="itineris-prevent-wp-user-enumeration" />
+      </property>
     </properties>
   </rule>
 </ruleset>
