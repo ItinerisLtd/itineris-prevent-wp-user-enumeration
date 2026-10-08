@@ -24,7 +24,7 @@ add_filter('login_errors', function (string $errors): string {
     $wp_error = $GLOBALS['errors'] ?? null;
     if ($wp_error instanceof WP_Error) {
         // Registration reuses some of these codes for validation errors.
-        if ('login' !== ($GLOBALS['action'] ?? 'login')) {
+        if ('register' === ($GLOBALS['action'] ?? null)) {
             return $errors;
         }
 
@@ -32,6 +32,7 @@ add_filter('login_errors', function (string $errors): string {
             'invalid_username',
             'invalid_email',
             'incorrect_password',
+            'invalidcombo',
         ];
         if ([] === array_intersect($enumerable_codes, $wp_error->get_error_codes())) {
             return $errors;
