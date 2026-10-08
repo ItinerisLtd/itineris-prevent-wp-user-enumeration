@@ -3,7 +3,7 @@
 [![Packagist Version](https://img.shields.io/packagist/v/itinerisltd/itineris-prevent-wp-user-enumeration.svg)](https://packagist.org/packages/itinerisltd/itineris-prevent-wp-user-enumeration)
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/itinerisltd/itineris-prevent-wp-user-enumeration.svg)](https://packagist.org/packages/itinerisltd/itineris-prevent-wp-user-enumeration)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/itinerisltd/itineris-prevent-wp-user-enumeration.svg)](https://packagist.org/packages/itinerisltd/itineris-prevent-wp-user-enumeration)
-[![GitHub License](https://img.shields.io/github/license/itinerisltd/itineris-prevent-wp-user-enumeration.svg)](https://github.com/ItinerisLtd/itineris-prevent-wp-user-enumeration/blob/master/LICENSE)
+[![GitHub License](https://img.shields.io/github/license/itinerisltd/itineris-prevent-wp-user-enumeration.svg)](https://github.com/ItinerisLtd/itineris-prevent-wp-user-enumeration/blob/main/LICENSE)
 [![Hire Itineris](https://img.shields.io/badge/Hire-Itineris-ff69b4.svg)](https://www.itineris.co.uk/contact/)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
