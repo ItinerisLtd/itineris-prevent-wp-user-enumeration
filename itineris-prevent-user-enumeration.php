@@ -21,12 +21,19 @@ if (! defined('WPINC')) {
 
 // Make login errors generic.
 add_filter('login_errors', function (string $errors): string {
-    if (isset($GLOBALS['errors']) && $GLOBALS['errors'] instanceof WP_Error) {
-        $error_codes = $GLOBALS['errors']->get_error_codes();
-        if (
-            ! in_array('invalid_username', $error_codes, true) &&
-            ! in_array('incorrect_password', $error_codes, true)
-        ) {
+    $wp_error = $GLOBALS['errors'] ?? null;
+    if ($wp_error instanceof WP_Error) {
+        // Registration reuses some of these codes for validation errors.
+        if ('login' !== ($GLOBALS['action'] ?? 'login')) {
+            return $errors;
+        }
+
+        $enumerable_codes = [
+            'invalid_username',
+            'invalid_email',
+            'incorrect_password',
+        ];
+        if ([] === array_intersect($enumerable_codes, $wp_error->get_error_codes())) {
             return $errors;
         }
     } else {
@@ -34,11 +41,7 @@ add_filter('login_errors', function (string $errors): string {
             'The username or password you entered is incorrect',
             'lostpassword',
         ];
-        $has_valid_error = (bool) array_filter(
-            $errors_to_check,
-            fn (string $error): bool => ! str_contains($errors, $error),
-        );
-        if ($has_valid_error) {
+        if (! array_any($errors_to_check, fn (string $error): bool => str_contains($errors, $error))) {
             return $errors;
         }
     }
