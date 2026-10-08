@@ -92,42 +92,30 @@ add_filter('the_author', function (string $author): string {
         return $author;
     }
 
-    if (! $GLOBALS['authordata'] instanceof WP_User) {
+    $user = $GLOBALS['authordata'] ?? null;
+    if (! $user instanceof WP_User) {
         return $author;
     }
 
     // Check lowercase in case it matches anything.
-    $author = strtolower($author);
-    $user = $GLOBALS['authordata'];
+    $lowercase_author = strtolower($author);
 
     // If not using "username", all is fine.
-    if (strtolower($user->user_login) !== $author) {
+    if (strtolower($user->user_login) !== $lowercase_author) {
         return $author;
     }
 
-    // If nicename is not the username, use it.
-    if (! empty($user->user_nicename) && strtolower($user->user_nicename) !== $author) {
-        return $user->user_nicename;
-    }
-
-    // If nickname is not the username, use it.
-    if (! empty($user->nickname) && strtolower($user->nickname) !== $author) {
-        return $user->nickname;
-    }
-
-    $maybe_new_author = '';
-    if (! empty($user->first_name)) {
-        $maybe_new_author = $user->first_name;
-    }
-    if (! empty($user->last_name)) {
-        $maybe_new_author = trim("{$maybe_new_author} {$user->last_name}");
-    }
-
-    // If first/last names are not the username, use it.
-    if (strtolower($maybe_new_author) !== $author) {
-        return $maybe_new_author;
+    // Nicename is skipped because it is derived from the username.
+    $candidates = [
+        (string) $user->nickname,
+        trim("{$user->first_name} {$user->last_name}"),
+    ];
+    foreach ($candidates as $candidate) {
+        if ('' !== $candidate && strtolower($candidate) !== $lowercase_author) {
+            return $candidate;
+        }
     }
 
     // Finally, if all options are same as the username then give up.
-    return 'REDACTED';
+    return __('REDACTED', 'itineris-prevent-wp-user-enumeration');
 });
