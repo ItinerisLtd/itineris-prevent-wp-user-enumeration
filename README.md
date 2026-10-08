@@ -32,7 +32,7 @@ Prevent the possibility of discovering usernames by various means.
 ## Requirements
 
 - WordPress 6.1 or later
-- PHP 8.1 or later
+- PHP 8.4 or later
 
 ## Installation
 
@@ -42,7 +42,7 @@ $ composer require itinerisltd/itineris-prevent-wp-user-enumeration
 
 ### Alternative Installation
 
-Upload [itineris-prevent-wp-user-enumeration.php](./itineris-prevent-wp-user-enumeration.php) to `wp-content/plugins`.
+Upload [itineris-prevent-user-enumeration.php](./itineris-prevent-user-enumeration.php) to `wp-content/plugins`.
 
 ## FAQs
 
